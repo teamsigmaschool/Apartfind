@@ -1,0 +1,20 @@
+import { Container, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+
+function ErrorPage() {
+  const navigate = useNavigate()
+
+  return (
+    <Container className="af-error">
+      <h1 className="af-page-title">Page not found</h1>
+      <p className="af-empty-copy">
+        That address does not match any page in ApartFind.
+      </p>
+      <Button className="af-cta" onClick={() => navigate('/')}>
+        Back to home
+      </Button>
+    </Container>
+  )
+}
+
+export default ErrorPage
