@@ -6,10 +6,9 @@ function Landing() {
 
   return (
     <Container className="af-landing">
-      <h1 className="af-landing-title">Find a place that actually fits.</h1>
+      <h1 className="af-landing-title">Find aparts in Apart-find.</h1>
       <p className="af-landing-sub">
-        Eight real Klang Valley apartments in one clean list, so comparing rent, size and area
-        does not mean fifty open tabs.
+        You get what I'm going for.
       </p>
       <Button className="af-cta" onClick={() => navigate('/apartments')}>
         Browse apartments
@@ -19,3 +18,4 @@ function Landing() {
 }
 
 export default Landing
+

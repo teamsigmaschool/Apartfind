@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
-  <rect width="640" height="420" fill="#DCD6CC"/>
-  <rect x="0" y="0" width="640" height="420" fill="none" stroke="#B8B0A2" stroke-width="2"/>
-  <text x="320" y="195" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#7A7264" text-anchor="middle">Card 5</text>
-  <text x="320" y="230" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#8C8474" text-anchor="middle">Puchong</text>
-  <text x="320" y="400" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#9A9284" text-anchor="middle">placeholder, 640x420</text>
-</svg>

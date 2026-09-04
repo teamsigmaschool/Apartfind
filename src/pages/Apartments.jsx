@@ -1,20 +1,35 @@
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
+
 import apartments from '../data/apartments.json'
 import ApartmentCard from '../components/ApartmentCard'
 
-function Apartments({ saved, onToggle }) {
+function Apartments({ saved, onSave }) {
   return (
     <Container className="af-apartments" fluid={false}>
       <h1 className="af-page-title">Apartments</h1>
-      <Row className="af-grid">
-        {apartments.map((apartment) => (
-          <Col key={apartment.id} xs={12} sm={6} lg={4} className="af-grid-col">
-            <ApartmentCard apartment={apartment} saved={saved} onToggle={onToggle} />
-          </Col>
+
+      {/*Inline styling so no css import*/}
+      <div className="af-grid" style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+        gap: '24px'
+      }}>
+        {/*Using Mapping and Key to loop and display each apartment*/}
+        {apartments.map((apartment) =>
+        (
+          <div key={apartment.id} className="af-grid-col">
+            <ApartmentCard
+              apartment={apartment}
+              saved={saved}
+              onSave={onSave}
+            />
+          </div>
         ))}
-      </Row>
+      </div>
+
     </Container>
   )
 }
 
 export default Apartments
+

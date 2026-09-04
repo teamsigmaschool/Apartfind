@@ -8,7 +8,7 @@ function ErrorPage() {
     <Container className="af-error">
       <h1 className="af-page-title">Page not found</h1>
       <p className="af-empty-copy">
-        That address does not match any page in ApartFind.
+        Why break the website :&#40;
       </p>
       <Button className="af-cta" onClick={() => navigate('/')}>
         Back to home
@@ -18,3 +18,4 @@ function ErrorPage() {
 }
 
 export default ErrorPage
+

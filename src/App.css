@@ -4,8 +4,12 @@
   box-sizing: border-box;
 }
 
-:root {
-  --af-ground: #FBF8F4;
+/* App.css is imported BEFORE bootstrap in App.jsx, so a plain .af-thing rule
+   loses to a bootstrap rule with the same specificity. Every selector below
+   that competes with bootstrap is written with its parent in front to win. */
+
+html:root {
+  --af-ground: #FFFFFF;
   --af-surface: #FFFFFF;
   --af-ink: #16202A;
   --af-ink-muted: #5A6672;
@@ -30,7 +34,12 @@ body,
 }
 
 body {
-  background: var(--af-ground);
+  background-color: var(--af-ground);
+  background-image: url("/my-design/main background.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  background-attachment: fixed;
   color: var(--af-ink);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
@@ -42,7 +51,7 @@ body {
   padding: 18px 0;
 }
 
-.af-navbar-inner {
+.af-navbar .af-navbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,20 +59,36 @@ body {
   max-width: 1120px;
 }
 
-.af-brand {
-  color: var(--af-ground) !important;
+.af-navbar .af-brand {
+  color: #FFFFFF;
   font-weight: 700;
   font-size: 20px;
   letter-spacing: -0.01em;
   margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.af-nav-links {
+/* The logo mark. Added from CSS so the JSX stays untouched. */
+.af-navbar .af-brand::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-image: url("/logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.af-navbar .af-nav-links {
   display: flex;
   gap: 10px;
 }
 
-.af-nav-btn {
+.af-navbar .af-nav-btn {
   border-radius: 4px;
   font-size: 14px;
   font-weight: 700;
@@ -71,28 +96,30 @@ body {
   line-height: 1.2;
 }
 
-.af-nav-btn-outline {
-  background: transparent !important;
-  border: 1px solid rgba(251, 248, 244, 0.4) !important;
-  color: var(--af-ground) !important;
+.af-navbar .af-nav-btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
 }
 
-.af-nav-btn-outline:hover,
-.af-nav-btn-outline:focus {
-  background: rgba(251, 248, 244, 0.12) !important;
-  border-color: rgba(251, 248, 244, 0.6) !important;
+.af-navbar .af-nav-btn-outline:hover,
+.af-navbar .af-nav-btn-outline:focus {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.65);
+  color: #FFFFFF;
 }
 
-.af-nav-btn-fill {
-  background: var(--af-accent) !important;
-  border: 1px solid var(--af-accent) !important;
-  color: #FFFFFF !important;
+.af-navbar .af-nav-btn-fill {
+  background: var(--af-accent);
+  border: 1px solid var(--af-accent);
+  color: #FFFFFF;
 }
 
-.af-nav-btn-fill:hover,
-.af-nav-btn-fill:focus {
-  background: var(--af-accent-text) !important;
-  border-color: var(--af-accent-text) !important;
+.af-navbar .af-nav-btn-fill:hover,
+.af-navbar .af-nav-btn-fill:focus {
+  background: var(--af-accent-text);
+  border-color: var(--af-accent-text);
+  color: #FFFFFF;
 }
 
 /* Page shell */
@@ -102,7 +129,7 @@ body {
   max-width: 1120px;
 }
 
-.af-page-title {
+.af-page .af-page-title {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -111,13 +138,13 @@ body {
 
 /* Landing */
 
-.af-landing {
-  padding: 64px 20px 40px;
+.af-page .af-landing {
+  padding: 64px 0 40px;
   max-width: 620px;
   margin: 0;
 }
 
-.af-landing-title {
+.af-page .af-landing-title {
   font-size: 40px;
   line-height: 1.15;
   font-weight: 700;
@@ -125,64 +152,63 @@ body {
   margin-bottom: 18px;
 }
 
-.af-landing-sub {
+.af-page .af-landing-sub {
   font-size: 17px;
   color: var(--af-ink-muted);
   margin-bottom: 28px;
   max-width: 460px;
 }
 
-.af-cta {
-  background: var(--af-accent) !important;
-  border: 1px solid var(--af-accent) !important;
-  color: #FFFFFF !important;
+.af-page .af-cta {
+  background: var(--af-accent);
+  border: 1px solid var(--af-accent);
+  color: #FFFFFF;
   font-weight: 700;
   font-size: 15px;
   padding: 12px 26px;
   border-radius: 4px;
 }
 
-.af-cta:hover,
-.af-cta:focus {
-  background: var(--af-accent-text) !important;
-  border-color: var(--af-accent-text) !important;
+.af-page .af-cta:hover,
+.af-page .af-cta:focus {
+  background: var(--af-accent-text);
+  border-color: var(--af-accent-text);
+  color: #FFFFFF;
 }
 
-/* Apartment grid */
-
-.af-grid {
-  --bs-gutter-x: 24px;
-  row-gap: 24px;
-}
+/* Card */
 
 .af-grid-col {
   display: flex;
 }
 
-/* Card */
-
-.af-card {
+.af-grid-col .af-card {
   background: var(--af-surface);
-  border: 1px solid var(--af-hairline) !important;
+  border: 1px solid var(--af-hairline);
   border-radius: 6px;
   overflow: hidden;
   width: 100%;
+  box-shadow: 0 1px 2px rgba(22, 32, 42, 0.06), 0 10px 24px rgba(22, 32, 42, 0.07);
 }
 
-.af-card-media {
+.af-card .af-card-media {
   position: relative;
 }
 
-.af-card-media img {
+/* One fixed photo height, so eight photos of eight different shapes
+   still line the cards up. */
+.af-card .af-card-media img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 190px;
+  object-fit: cover;
 }
 
-.af-badge {
+.af-card .af-card-media .af-badge {
   position: absolute;
   top: 12px;
   left: 12px;
+  /* bootstrap's .bg-primary uses !important, so the badge needs it too */
   background: var(--af-support) !important;
   color: #FFFFFF !important;
   font-weight: 600;
@@ -191,72 +217,87 @@ body {
   border-radius: 3px;
 }
 
-.af-card-body {
+/* The card artwork sits behind the text, under a white veil so the text
+   keeps its contrast. Two background layers: the veil on top, the art below. */
+.af-card .af-card-body {
   padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.94)),
+    url("/my-design/apartment-card 2.png");
+  background-size: cover, cover;
+  background-position: center, center 34%;
+  background-repeat: no-repeat, no-repeat;
 }
 
-.af-card-title {
+.af-card .af-card-title {
   font-size: 17px;
   font-weight: 700;
-  margin-bottom: 2px;
+  line-height: 1.3;
+  margin-bottom: 3px;
 }
 
-.af-card-area {
+.af-card .af-card-area {
   font-size: 13px;
-  color: var(--af-ink-muted) !important;
-  margin-bottom: 12px;
+  font-weight: 400;
+  color: var(--af-ink-muted);
+  margin-bottom: 10px;
   display: block;
 }
 
-.af-card-specs {
+.af-card .af-card-specs {
   font-size: 13px;
   color: var(--af-ink-muted);
   margin-bottom: 16px;
 }
 
-.af-card-footer {
+.af-card .af-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid var(--af-hairline);
   padding-top: 14px;
+  margin-top: auto;
 }
 
-.af-card-price {
+.af-card .af-card-price {
   font-size: 17px;
   font-weight: 700;
 }
 
-.af-toggle-btn {
-  background: transparent !important;
-  border: 1px solid var(--af-accent) !important;
-  color: var(--af-accent-text) !important;
+.af-card .af-toggle-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--af-accent);
+  color: var(--af-accent-text);
   font-size: 13px;
   font-weight: 700;
   padding: 6px 14px;
   border-radius: 4px;
 }
 
-.af-toggle-btn:hover,
-.af-toggle-btn:focus {
-  background: var(--af-accent) !important;
-  color: #FFFFFF !important;
+.af-card .af-toggle-btn:hover,
+.af-card .af-toggle-btn:focus {
+  background: var(--af-accent);
+  color: #FFFFFF;
 }
 
-.af-toggle-btn-active {
-  background: var(--af-accent) !important;
-  color: #FFFFFF !important;
+.af-card .af-toggle-btn-active {
+  background: var(--af-accent);
+  color: #FFFFFF;
 }
 
-/* Empty / error states */
+/* Empty and error states */
 
-.af-saved-empty,
-.af-error {
+.af-page .af-saved-empty,
+.af-page .af-error {
   padding: 8px 0 40px;
   max-width: 520px;
+  margin: 0;
 }
 
-.af-empty-copy {
+.af-page .af-empty-copy {
   color: var(--af-ink-muted);
   font-size: 16px;
   margin-bottom: 24px;
@@ -264,16 +305,56 @@ body {
 
 /* Small screens */
 
+@media (max-width: 768px) {
+  /* fixed backgrounds are unreliable on mobile browsers, and cover on a
+     portrait screen crops the artwork down to nothing. Show the skyline
+     corner at its own scale instead. */
+  body {
+    background-attachment: scroll;
+    background-size: 190% auto;
+    background-position: left bottom;
+  }
+}
+
+@media (max-width: 400px) {
+  /* the grid is set inline at minmax(280px, 1fr), which is wider than a
+     320px screen once the page padding is taken off. One column instead. */
+  .af-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
 @media (max-width: 576px) {
-  .af-landing {
+  .af-page .af-landing {
     padding-top: 48px;
   }
 
-  .af-landing-title {
+  .af-page .af-landing-title {
     font-size: 30px;
   }
 
-  .af-navbar-inner {
+  /* the brand and the two buttons do not fit side by side at 320px
+     unless both shrink */
+  .af-navbar .af-navbar-inner {
     flex-wrap: wrap;
+  }
+
+  .af-navbar .af-brand {
+    font-size: 17px;
+    gap: 8px;
+  }
+
+  .af-navbar .af-brand::before {
+    width: 26px;
+    height: 26px;
+  }
+
+  .af-navbar .af-nav-links {
+    gap: 8px;
+  }
+
+  .af-navbar .af-nav-btn {
+    font-size: 13px;
+    padding: 7px 12px;
   }
 }

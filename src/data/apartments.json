@@ -7,7 +7,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "sizeSqft": 950,
-    "image": "public/images/ph-apartment-1_640x420.svg"
+    "image": "/images/Seri Maya.jpg"
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "bedrooms": 3,
     "bathrooms": 3,
     "sizeSqft": 1400,
-    "image": "/images/ph-apartment-2_640x420.svg"
+    "image": "/images/Kiara Heights Suites.jpg"
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "bedrooms": 2,
     "bathrooms": 1,
     "sizeSqft": 700,
-    "image": "/images/ph-apartment-3_640x420.svg"
+    "image": "/images/Cheras Vista Court.jpg"
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "sizeSqft": 1200,
-    "image": "/images/ph-apartment-4_640x420.svg"
+    "image": "/images/subang garden residences.jpg"
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "sizeSqft": 480,
-    "image": "/images/ph-apartment-5_640x420.svg"
+    "image": "/images/puchong riverwalk studios.jpg"
   },
   {
     "id": 6,
@@ -57,7 +57,7 @@
     "bedrooms": 2,
     "bathrooms": 1,
     "sizeSqft": 820,
-    "image": "/images/ph-apartment-6_640x420.svg"
+    "image": "/images/setapak skyline apartments.jpg"
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@
     "bedrooms": 2,
     "bathrooms": 2,
     "sizeSqft": 900,
-    "image": "/images/ph-apartment-7_640x420.svg"
+    "image": "/images/ampang greenview residences.jpg"
   },
   {
     "id": 8,
@@ -77,6 +77,6 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "sizeSqft": 1300,
-    "image": "/images/ph-apartment-8_640x420.svg"
+    "image": "/images/jalil sky residences.jpg"
   }
 ]

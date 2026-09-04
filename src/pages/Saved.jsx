@@ -1,8 +1,11 @@
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Button } from 'react-bootstrap'
+
 import { useNavigate } from 'react-router-dom'
+
 import ApartmentCard from '../components/ApartmentCard'
 
-function Saved({ saved, onToggle }) {
+function Saved({ saved, onSave }) {
+  // to redirect to browse apartments if nothing is saved, QoL feature
   const navigate = useNavigate()
 
   if (saved.length === 0) {
@@ -10,7 +13,7 @@ function Saved({ saved, onToggle }) {
       <Container className="af-saved-empty">
         <h1 className="af-page-title">Saved</h1>
         <p className="af-empty-copy">
-          Nothing saved yet. Browse the list and tap Save on a few you like.
+          Nothing saved yet. Go find.
         </p>
         <Button className="af-cta" onClick={() => navigate('/apartments')}>
           Browse apartments
@@ -22,20 +25,29 @@ function Saved({ saved, onToggle }) {
   return (
     <Container className="af-saved">
       <h1 className="af-page-title">Saved</h1>
-      <Row className="af-grid">
-        {saved.map((apartment) => (
-          <Col key={apartment.id} xs={12} sm={6} lg={4} className="af-grid-col">
+
+      {/*Inline styling so no css import*/}
+      <div className="af-grid" style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+        gap: '24px'
+      }}>
+        {/*also mapping but from the saved state apartments only*/}
+        {saved.map((apartment) =>
+        (
+          <div key={apartment.id} className="af-grid-col">
             <ApartmentCard
               apartment={apartment}
               saved={saved}
-              onToggle={onToggle}
-              removeMode={true}
+              onSave={onSave}
+              isRemove={true} // this what triggers the 'Remove' label
             />
-          </Col>
+          </div>
         ))}
-      </Row>
+      </div>
     </Container>
   )
 }
 
 export default Saved
+
